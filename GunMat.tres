@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c5m52dbb20xkd"]
+
+[ext_resource type="Texture2D" uid="uid://bar6rc07swven" path="res://Models/blend/text_Gun_STD.png" id="1_prf4o"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_prf4o")
+texture_filter = 0

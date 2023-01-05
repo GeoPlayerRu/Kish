@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkm7acglnihhi"]
+
+[ext_resource type="PackedScene" uid="uid://dveolgcb5rgeo" path="res://Models/Firewood.glb" id="1_cw0xt"]
+[ext_resource type="Script" path="res://Scripts/Firewood.gd" id="1_t6l4l"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dugwq"]
+radius = 1.0
+
+[node name="Firewood" type="Area3D"]
+script = ExtResource("1_t6l4l")
+
+[node name="Firewood" parent="." instance=ExtResource("1_cw0xt")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_dugwq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

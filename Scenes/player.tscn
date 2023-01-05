@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://lbby5b8f2b7b"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_5t5rw"]
+[ext_resource type="PackedScene" uid="uid://c4sjhvfs8r7gr" path="res://Scenes/rifle.tscn" id="2_c16xq"]
+[ext_resource type="Script" path="res://Scripts/Pointer.gd" id="3_a6iaj"]
+[ext_resource type="Shader" uid="uid://cidp6jdupbgo3" path="res://Shader/FCTBA.tres" id="4_idadg"]
+[ext_resource type="Texture2D" uid="uid://dj0euejg51x8j" path="res://Sprites/DamageTipo.png" id="4_thlh6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l3wvy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qdabr"]
+shader = ExtResource("4_idadg")
+shader_parameter/Amount = 2.0
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_5t5rw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_l3wvy")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+light_energy = 0.01
+omni_range = 10.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+current = true
+
+[node name="Active" type="Node3D" parent="Camera3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.527055, -0.360074, -0.39155)
+
+[node name="Rifle" parent="Camera3D/Active" instance=ExtResource("2_c16xq")]
+
+[node name="Pointer" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -200)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("3_a6iaj")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+light_energy = 0.4
+spot_range = 100.0
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
+current = true
+
+[node name="Health" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_qdabr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_thlh6")
+
+[node name="RegenTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]

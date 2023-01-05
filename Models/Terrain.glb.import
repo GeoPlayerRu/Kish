@@ -1,0 +1,49 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://dujwsle6ici1o"
+path="res://.godot/imported/Terrain.glb-77858ecb440f290706e683d341fa844a.scn"
+
+[deps]
+
+source_file="res://Models/Terrain.glb"
+dest_files=["res://.godot/imported/Terrain.glb-77858ecb440f290706e683d341fa844a.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+import_script/path=""
+_subresources={
+"materials": {
+"mat_Snow": {
+"use_external/enabled": false,
+"use_external/path": "res://Materials/Terrain.tres"
+}
+},
+"meshes": {
+"Terrain_Плоскость": {
+"generate/lightmap_uv": 1,
+"generate/lods": 2
+}
+},
+"nodes": {
+"PATH:Terrain2": {
+"generate/physics": true,
+"physics/shape_type": 2
+}
+}
+}

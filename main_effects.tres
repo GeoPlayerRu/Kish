@@ -1,0 +1,22 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://cc8y7v0qc7w1b"]
+
+[ext_resource type="Texture2D" uid="uid://bmrusfrrmi6g3" path="res://Sprites/Sabbath bloody sabbath.png" id="1_4irld"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_aox4m"]
+panorama = ExtResource("1_4irld")
+
+[sub_resource type="Sky" id="Sky_xnxs7"]
+sky_material = SubResource("PanoramaSkyMaterial_aox4m")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_xnxs7")
+sky_custom_fov = 90.0
+sky_rotation = Vector3(-0.785398, 0, 0)
+ambient_light_source = 2
+ambient_light_color = Color(0.188235, 0.192157, 0.235294, 1)
+tonemap_mode = 3
+fog_enabled = true
+fog_light_color = Color(0.027451, 0.027451, 0.0392157, 1)
+fog_density = 0.08
+fog_sky_affect = 0.5
