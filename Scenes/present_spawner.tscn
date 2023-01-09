@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://q6jnpi6pwwjy"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://Scripts/PresentSpawner.gd" id="1_tt3te"]
-[ext_resource type="PackedScene" uid="uid://b88e50fe0kak" path="res://Scenes/present.tscn" id="2_j2nq1"]
+[ext_resource type="PackedScene" path="res://Scenes/present.tscn" id="2_j2nq1"]
 
 [sub_resource type="Animation" id="Animation_4do58"]
 resource_name = "Fly"

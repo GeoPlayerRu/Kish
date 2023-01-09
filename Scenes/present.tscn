@@ -1,7 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://b88e50fe0kak"]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Texture2D" uid="uid://ddb7um76sqbj7" path="res://Sprites/ItemIcons.png" id="2_4wuj4"]
 [ext_resource type="Script" path="res://Scripts/Present.gd" id="2_5yxb0"]
+[ext_resource type="Shader" uid="uid://cv4dvr5w063xx" path="res://Shader/Outline.tres" id="2_xoqdk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_crrhh"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_xoqdk")
+shader_parameter/Thickness = 0.1
+shader_parameter/Color = Color(1, 1, 1, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqt46"]
 resource_name = "mat_Present"
@@ -82,14 +90,18 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("2_5yxb0")
+outline_color = Color(1, 1, 1, 1)
+outline_material = SubResource("ShaderMaterial_crrhh")
 
 [node name="Present" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+material_overlay = SubResource("ShaderMaterial_crrhh")
 mesh = SubResource("ArrayMesh_gtbqu")
 skeleton = NodePath("")
 
 [node name="Lenta" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+material_overlay = SubResource("ShaderMaterial_crrhh")
 mesh = SubResource("ArrayMesh_8kc3y")
 skeleton = NodePath("")
 
@@ -99,7 +111,7 @@ pixel_size = 0.1
 billboard = 2
 texture_filter = 0
 texture = ExtResource("2_4wuj4")
-hframes = 5
+hframes = 6
 vframes = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

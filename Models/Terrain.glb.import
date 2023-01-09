@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dujwsle6ici1o"
+uid="uid://1v1hfck54cbh"
 path="res://.godot/imported/Terrain.glb-77858ecb440f290706e683d341fa844a.scn"
 
 [deps]
@@ -41,6 +41,38 @@ _subresources={
 }
 },
 "nodes": {
+"PATH:Terrain001": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Terrain002": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Terrain003": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Terrain004": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Terrain005": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Terrain006": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Terrain007": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Terrain008": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
 "PATH:Terrain2": {
 "generate/physics": true,
 "physics/shape_type": 2

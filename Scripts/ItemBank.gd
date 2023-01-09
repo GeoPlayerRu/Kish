@@ -15,6 +15,12 @@ class Item:
 		action = _action
 		icon_id = _icon_id
 
+func restart():
+	white_category.clear()
+	blue_category.clear()
+	red_category.clear()
+	yellow_category.clear()
+
 var white_category : Array[Item] = []
 var blue_category : Array[Item] = []
 var red_category : Array[Item] = []

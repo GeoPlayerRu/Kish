@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c0d46l53bp4g6"]
+
+[ext_resource type="Texture2D" uid="uid://cvr3ouxbe2kw" path="res://Sprites/LogNine.png" id="1_6ujac"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dlynx"]
+texture = ExtResource("1_6ujac")
+margin_left = 33.0
+margin_top = 33.0
+margin_right = 33.0
+margin_bottom = 33.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 99, 99)
+
+[resource]
+MarginContainer/constants/margin_bottom = 33
+MarginContainer/constants/margin_left = 33
+MarginContainer/constants/margin_right = 33
+MarginContainer/constants/margin_top = 33
+Panel/styles/panel = SubResource("StyleBoxTexture_dlynx")

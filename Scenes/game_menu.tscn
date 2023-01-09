@@ -1,0 +1,231 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4hs0ss5ce5t8"]
+
+[ext_resource type="Script" path="res://Scripts/GameMenu.gd" id="1_6xo3s"]
+[ext_resource type="Theme" uid="uid://c0d46l53bp4g6" path="res://main_theme.tres" id="1_n5mmg"]
+[ext_resource type="Script" path="res://Scripts/slider_value.gd" id="2_1cot7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cuk67"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_woo64"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_r8eih"]
+font_size = 32
+
+[node name="Menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6xo3s")
+
+[node name="Panel" type="Panel" parent="."]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -282.0
+offset_top = -242.0
+offset_right = 282.0
+offset_bottom = 242.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_n5mmg")
+
+[node name="Head" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Head"]
+layout_mode = 2
+text = "MENU"
+label_settings = SubResource("LabelSettings_cuk67")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_n5mmg")
+text = "Volume
+"
+label_settings = SubResource("LabelSettings_woo64")
+
+[node name="Volume" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VolumeSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/Volume"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Sensivity for the mouse"
+focus_neighbor_bottom = NodePath("../../GamepadSensivitySlider")
+focus_next = NodePath("../../GamepadSensivitySlider")
+theme = ExtResource("1_n5mmg")
+value = 75.0
+tick_count = 5
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Volume"]
+layout_mode = 2
+text = "75
+"
+script = ExtResource("2_1cot7")
+
+[node name="Sensivity" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_n5mmg")
+text = "Sensivity"
+label_settings = SubResource("LabelSettings_woo64")
+
+[node name="SensivitySlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Sensivity for the mouse"
+focus_neighbor_bottom = NodePath("../GamepadSensivitySlider")
+focus_next = NodePath("../GamepadSensivitySlider")
+theme = ExtResource("1_n5mmg")
+min_value = 0.01
+max_value = 2.0
+step = 0.01
+value = 1.0
+
+[node name="GamepadSensivity" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_n5mmg")
+text = "Gamepad Sensivity"
+label_settings = SubResource("LabelSettings_woo64")
+
+[node name="GamepadSensivitySlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Sensivity for the gamepad"
+focus_neighbor_top = NodePath("../SensivitySlider")
+focus_neighbor_bottom = NodePath("../Post-Effects/CheckBox")
+focus_next = NodePath("../Post-Effects/CheckBox")
+focus_previous = NodePath("../SensivitySlider")
+theme = ExtResource("1_n5mmg")
+max_value = 16.0
+step = 0.1
+value = 1.0
+
+[node name="Post-Effects" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_n5mmg")
+
+[node name="CheckBox" type="CheckButton" parent="Panel/MarginContainer/VBoxContainer/Post-Effects"]
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "Toggle post effects listed below"
+focus_neighbor_top = NodePath("../../GamepadSensivitySlider")
+focus_neighbor_bottom = NodePath("../../Pixelization/PixelizationCheck")
+focus_next = NodePath("../../Pixelization/PixelizationCheck")
+theme = ExtResource("1_n5mmg")
+button_pressed = true
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Post-Effects"]
+layout_mode = 2
+theme = ExtResource("1_n5mmg")
+text = "Post-Effects"
+label_settings = SubResource("LabelSettings_r8eih")
+horizontal_alignment = 1
+
+[node name="PixelizationLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_n5mmg")
+text = "Pixelization"
+label_settings = SubResource("LabelSettings_woo64")
+
+[node name="Pixelization" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_n5mmg")
+
+[node name="PixelizationCheck" type="CheckButton" parent="Panel/MarginContainer/VBoxContainer/Pixelization"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../Post-Effects/CheckBox")
+focus_neighbor_right = NodePath("../PixelizationSlider")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/ColorCorrectionSlider")
+theme = ExtResource("1_n5mmg")
+button_pressed = true
+
+[node name="PixelizationSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/Pixelization"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Set the amount of pixelization"
+focus_neighbor_left = NodePath("../PixelizationCheck")
+focus_neighbor_top = NodePath("../../Post-Effects/CheckBox")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/ColorCorrectionSlider")
+focus_next = NodePath("../../HBoxContainer/ColorCorrectionSlider")
+focus_previous = NodePath("../../Post-Effects/CheckBox")
+theme = ExtResource("1_n5mmg")
+min_value = 1.0
+max_value = 64.0
+value = 4.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/Pixelization"]
+layout_mode = 2
+theme = ExtResource("1_n5mmg")
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Pixelization/PanelContainer"]
+layout_mode = 2
+theme = ExtResource("1_n5mmg")
+text = "4"
+script = ExtResource("2_1cot7")
+
+[node name="ColorCorrectionLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_n5mmg")
+text = "Color Correction
+"
+label_settings = SubResource("LabelSettings_woo64")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_n5mmg")
+
+[node name="ColorCorrectionSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Set the pallete restriction"
+focus_neighbor_top = NodePath("../../Pixelization/PixelizationCheck")
+focus_previous = NodePath("../../Pixelization/PixelizationCheck")
+theme = ExtResource("1_n5mmg")
+max_value = 256.0
+value = 24.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_n5mmg")
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme = ExtResource("1_n5mmg")
+text = "24"
+script = ExtResource("2_1cot7")
+
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/Volume/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/Volume/VolumeSlider" to="Panel/MarginContainer/VBoxContainer/Volume/Label" method="_on_slider_value_changed"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/SensivitySlider" to="." method="_on_sensivity_value_changed"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/GamepadSensivitySlider" to="." method="_on_gamepad_sensivity_slider_value_changed"]
+[connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/Post-Effects/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/Pixelization/PixelizationCheck" to="." method="_on_pixelization_check_toggled"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/Pixelization/PixelizationSlider" to="." method="_on_pixelization_value_changed"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/Pixelization/PixelizationSlider" to="Panel/MarginContainer/VBoxContainer/Pixelization/PanelContainer/Label" method="_on_slider_value_changed"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/ColorCorrectionSlider" to="." method="_on_color_correction_value_changed"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/ColorCorrectionSlider" to="Panel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/Label" method="_on_slider_value_changed"]

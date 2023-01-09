@@ -1,0 +1,20 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://cebgtu278hgqw"]
+
+[sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_4p8rv"]
+resource_name = "Phaser"
+rate_hz = 0.125
+
+[sub_resource type="AudioEffectFilter" id="AudioEffectFilter_wwkmx"]
+resource_name = "Filter"
+
+[resource]
+bus/1/name = &"Ambient"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectPhaser_4p8rv")
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectFilter_wwkmx")
+bus/1/effect/1/enabled = true

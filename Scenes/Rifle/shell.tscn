@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dundq6r4rfdl1"]
+
+[ext_resource type="PackedScene" uid="uid://cqugpkhqlpp3b" path="res://Models/Shell.glb" id="1_ywvsv"]
+[ext_resource type="Script" path="res://Scripts/Rifle/Shell.gd" id="2_k7em0"]
+
+[node name="Shell" instance=ExtResource("1_ywvsv")]
+script = ExtResource("2_k7em0")
+
+[node name="Case" parent="." index="0"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)

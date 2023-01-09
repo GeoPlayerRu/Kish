@@ -1,17 +1,18 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjbil32akjehc"]
 
-[sub_resource type="GDScript" id="GDScript_qsykw"]
+[sub_resource type="GDScript" id="GDScript_iax2y"]
 resource_name = "dead_body"
 script/source = "extends RigidBody3D
 
 
 func _on_fade_out_animation_finished(_anim_name: StringName) -> void:
-	get_tree().change_scene_to_packed(load(\"res://Scenes/menu.tscn\"))
+	get_tree().change_scene_to_file(\"res://Scenes/menu.tscn\")
+	ItemBank.restart()
 "
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1v1mf"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ybmiy"]
 
-[sub_resource type="Animation" id="Animation_0uhak"]
+[sub_resource type="Animation" id="Animation_lp4p8"]
 resource_name = "FadeOut"
 length = 3.0
 tracks/0/type = "value"
@@ -27,7 +28,7 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_8kncg"]
+[sub_resource type="Animation" id="Animation_f6qet"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -42,22 +43,22 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wdv4s"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a8y2p"]
 _data = {
-"FadeOut": SubResource("Animation_0uhak"),
-"RESET": SubResource("Animation_8kncg")
+"FadeOut": SubResource("Animation_lp4p8"),
+"RESET": SubResource("Animation_f6qet")
 }
 
 [node name="DeadBody" type="RigidBody3D"]
-script = SubResource("GDScript_qsykw")
+script = SubResource("GDScript_iax2y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_1v1mf")
+shape = SubResource("CapsuleShape3D_ybmiy")
 
 [node name="FadeOut" type="AnimationPlayer" parent="."]
 autoplay = "FadeOut"
 libraries = {
-"": SubResource("AnimationLibrary_wdv4s")
+"": SubResource("AnimationLibrary_a8y2p")
 }
 
 [node name="Fade" type="ColorRect" parent="FadeOut"]

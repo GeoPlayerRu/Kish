@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq4yqy0p2agld"]
+[gd_scene load_steps=4 format=3 uid="uid://cq4yqy0p2agld"]
 
-[sub_resource type="GDScript" id="GDScript_4obo0"]
+[ext_resource type="PackedScene" uid="uid://cgsox2f053gwy" path="res://Models/Explosion.glb" id="1_stlbw"]
+
+[sub_resource type="GDScript" id="GDScript_01tmi"]
 resource_name = "explosion"
 script/source = "extends Area3D
 
@@ -8,6 +10,7 @@ var radius := 1.0:
 	set(value):
 		radius = value
 		$Collider.shape.radius = value
+		$Explosion.scale = Vector3(value*0.2,value*0.2,value*0.2)
 var damage : int
 
 
@@ -21,15 +24,18 @@ func _on_body_entered(body: Node3D) -> void:
 		body.deal_damage(damage)
 "
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_7yqg1"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_73qf4"]
 
 [node name="Explosion" type="Area3D"]
 collision_mask = 17
 monitorable = false
-script = SubResource("GDScript_4obo0")
+script = SubResource("GDScript_01tmi")
+
+[node name="Explosion" parent="." instance=ExtResource("1_stlbw")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="Collider" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_7yqg1")
+shape = SubResource("SphereShape3D_73qf4")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

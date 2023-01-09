@@ -1,28 +1,30 @@
-[gd_scene load_steps=8 format=3 uid="uid://lbby5b8f2b7b"]
+[gd_scene load_steps=12 format=3 uid="uid://8k7mwk62whcl"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_5t5rw"]
-[ext_resource type="PackedScene" uid="uid://c4sjhvfs8r7gr" path="res://Scenes/rifle.tscn" id="2_c16xq"]
+[ext_resource type="PackedScene" uid="uid://kygkb5tg4u6e" path="res://Scenes/Rifle/rifle.tscn" id="2_mlh38"]
 [ext_resource type="Script" path="res://Scripts/Pointer.gd" id="3_a6iaj"]
 [ext_resource type="Shader" uid="uid://cidp6jdupbgo3" path="res://Shader/FCTBA.tres" id="4_idadg"]
 [ext_resource type="Texture2D" uid="uid://dj0euejg51x8j" path="res://Sprites/DamageTipo.png" id="4_thlh6"]
+[ext_resource type="Texture2D" uid="uid://dsis6dsarau6v" path="res://Sprites/Moroz.png" id="6_8hjxh"]
+[ext_resource type="Script" path="res://Scripts/Dodge.gd" id="7_qdxg3"]
+[ext_resource type="AudioStream" uid="uid://c6x8egoapjfm" path="res://Sounds/Hit.wav" id="8_6yvxd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l3wvy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qdabr"]
 shader = ExtResource("4_idadg")
-shader_parameter/Amount = 2.0
+shader_parameter/Amount = 1.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kc3so"]
+shader = ExtResource("4_idadg")
+shader_parameter/Amount = 1.5
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 4
 script = ExtResource("1_5t5rw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_l3wvy")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
-light_energy = 0.01
-omni_range = 10.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -31,15 +33,7 @@ current = true
 [node name="Active" type="Node3D" parent="Camera3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.527055, -0.360074, -0.39155)
 
-[node name="Rifle" parent="Camera3D/Active" instance=ExtResource("2_c16xq")]
-
-[node name="Pointer" type="RayCast3D" parent="Camera3D"]
-target_position = Vector3(0, 0, -200)
-collision_mask = 2
-hit_from_inside = true
-collide_with_areas = true
-collide_with_bodies = false
-script = ExtResource("3_a6iaj")
+[node name="Rifle" parent="Camera3D/Active" instance=ExtResource("2_mlh38")]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
 light_energy = 0.4
@@ -47,6 +41,13 @@ spot_range = 100.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
 current = true
+
+[node name="Pointer" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -5)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("3_a6iaj")
 
 [node name="Health" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_qdabr")
@@ -57,7 +58,27 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_thlh6")
 
-[node name="RegenTimer" type="Timer" parent="."]
-autostart = true
+[node name="Moroz" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_kc3so")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_8hjxh")
 
-[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
+[node name="Dodge" type="Node" parent="."]
+script = ExtResource("7_qdxg3")
+
+[node name="DodgeCooldown" type="Timer" parent="Dodge"]
+wait_time = 6.0
+one_shot = true
+
+[node name="DodgeTimer" type="Timer" parent="Dodge"]
+wait_time = 0.25
+one_shot = true
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_6yvxd")
+
+[connection signal="timeout" from="Dodge/DodgeTimer" to="Dodge" method="_on_dodge_timer_timeout"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_wllba"]
+
+[node name="Enemy" type="Area3D"]
+collision_layer = 17
+collision_mask = 4
+input_ray_pickable = false
+script = ExtResource("1_wllba")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.1
+billboard = 2
+shaded = true
+texture_filter = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

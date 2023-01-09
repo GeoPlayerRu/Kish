@@ -62,7 +62,10 @@ func roll() -> int:
 			if randi_range(0,20)+Globals.player.luck <= 6 :
 				res = roll()
 			elif Globals.player.luck > randi_range(0,20):
-				res += 1 if ItemBank.red_category.size() > 0 else 2
+				if ItemBank.red_category.size() > 0:
+					res += 1
+				elif ItemBank.yellow_category.size() > 0:
+					res += 2
 		2:
 			if randi_range(0,20)+Globals.player.luck <= 10 or ItemBank.red_category.size() <= 0:
 				res = roll()

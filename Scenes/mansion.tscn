@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://cmh1t2owa6pxi" path="res://Models/Mansion.glb" id="1_epeos"]
 [ext_resource type="PackedScene" uid="uid://dqo6w7ufsiajj" path="res://Models/Bed.gltf" id="2_8hfjb"]
 [ext_resource type="PackedScene" uid="uid://wo3lx7csngxr" path="res://Models/Comod.gltf" id="3_l24kk"]
-[ext_resource type="PackedScene" uid="uid://c0tplblqm73i1" path="res://Scenes/chimney.tscn" id="5_44edb"]
-[ext_resource type="PackedScene" uid="uid://bhafcc4ogwdfi" path="res://Scenes/door.tscn" id="6_5ctrj"]
+[ext_resource type="PackedScene" uid="uid://cch6at7qebk00" path="res://Scenes/chimney.tscn" id="5_44edb"]
+[ext_resource type="PackedScene" path="res://Scenes/door.tscn" id="6_5ctrj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8y4q0"]
 size = Vector3(0.591046, 3.94612, 5.02364)
@@ -65,6 +65,7 @@ transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65721, 4.67871, -0.371835)
 light_color = Color(1, 0.435294, 0, 1)
 light_energy = 2.0
+shadow_enabled = true
 omni_range = 10.0
 
 [node name="Door" parent="." index="8" instance=ExtResource("6_5ctrj")]
