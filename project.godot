@@ -63,6 +63,7 @@ config/windows_native_icon="res://Sprites/Icon.ico"
 ItemBank="*res://Scripts/ItemBank.gd"
 Globals="*res://Scripts/Globals.gd"
 WaveSystem="*res://Scripts/WaveSystem/WaveSystem.gd"
+SettingsSaver="*res://Scripts/SettingsSaver.gd"
 
 [display]
 

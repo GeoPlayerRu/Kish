@@ -8,12 +8,17 @@ var locked : bool
 var door
 var started : bool
 var wave_spawner
+
+var enemy_count : int
+
 var enemies : int:
 	set(value):
-		enemies = value
-		if enemies <= 0:
+		enemy_count = value
+		if enemy_count <= 0:
 			on_enemies_ran_out.emit()
 			end()
+	get:
+		return enemy_count
 
 signal on_enemies_ran_out
 signal on_waves_changed(value : int)
@@ -21,6 +26,7 @@ signal on_waves_changed(value : int)
 func prepare():
 	waves += 1
 	locked = true
+	
 	door.toggle(false)
 
 func start():
@@ -32,4 +38,5 @@ func end():
 	locked = false
 	started = false
 	door.toggle(false)
-	Globals.player.max_hp += 0.1
+	if Globals.player:
+		Globals.player.max_hp += 0.1

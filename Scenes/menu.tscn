@@ -6,6 +6,14 @@
 resource_name = "Menu"
 script/source = "extends TextureRect
 
+func _ready() -> void:
+	WaveSystem.waves = 0
+	WaveSystem.enemy_count = 0
+	Globals.firewoods = 3
+	WaveSystem.locked = false
+	WaveSystem.started = false
+	
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(\"ui_accept\") or event.is_action_pressed(\"fire\"):
 		$ColorRect/Fade.play(\"FadeOut\")
@@ -72,6 +80,7 @@ texture = ExtResource("1_ra7kp")
 script = SubResource("GDScript_qtkak")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
