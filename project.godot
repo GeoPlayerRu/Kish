@@ -29,6 +29,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://Scripts/Interactable.gd"
 }, {
+"base": "Node",
+"class": &"ItemDescription",
+"language": &"GDScript",
+"path": "res://Scripts/ItemDescription.gd"
+}, {
 "base": "CharacterBody3D",
 "class": &"Player",
 "language": &"GDScript",
@@ -44,6 +49,7 @@ _global_script_class_icons={
 "BarrelData": "",
 "Enemy": "",
 "Interactable": "",
+"ItemDescription": "",
 "Player": "",
 "Shot": ""
 }
@@ -166,6 +172,7 @@ menu={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":6,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194305,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 dodge={
@@ -174,6 +181,12 @@ dodge={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translation_remaps={}
+locale/translations=PackedStringArray("res://Translations/Translation.en.translation", "res://Translations/Translation.ru.translation")
+locale/locale_filter_mode=0
 
 [layer_names]
 

@@ -6,14 +6,18 @@ class Item:
 	var action : Callable
 	var icon_id : int
 	var used : bool = false
+	var key : String
 	
 	func apply():
 		action.call()
 		used = true
+		Globals.item_description.queue(key)
 	
-	func _init(_icon_id : int, _action : Callable = func(): pass) -> void:
+	func _init(_key : String, _icon_id : int, _action : Callable = func(): pass) -> void:
 		action = _action
 		icon_id = _icon_id
+		key = _key
+		
 
 func restart():
 	white_category.clear()

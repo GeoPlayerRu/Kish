@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://w23ufjwjyihk"]
+[gd_scene load_steps=26 format=3 uid="uid://w23ufjwjyihk"]
 
 [ext_resource type="PackedScene" uid="uid://1v1hfck54cbh" path="res://Models/Terrain.glb" id="1_pi6xk"]
 [ext_resource type="Environment" uid="uid://cc8y7v0qc7w1b" path="res://main_effects.tres" id="2_0eynd"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/enemy_spawner.tscn" id="8_vkp1d"]
 [ext_resource type="Script" path="res://Scripts/WaveCounter.gd" id="10_khdd7"]
 [ext_resource type="PackedScene" uid="uid://d4hs0ss5ce5t8" path="res://Scenes/game_menu.tscn" id="11_nirtq"]
+[ext_resource type="PackedScene" uid="uid://c53fmlnni8rvu" path="res://Scenes/item_description.tscn" id="11_prh7q"]
 [ext_resource type="Shader" path="res://Shader/Pixelation.gdshader" id="12_bpcsk"]
 [ext_resource type="AudioStream" uid="uid://cm7b4q5cij0ah" path="res://Sounds/Ambient.wav" id="13_ithsj"]
 [ext_resource type="Script" path="res://Scripts/AmbientSilencer.gd" id="14_2fgg8"]
@@ -426,6 +427,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ItemDescription" parent="." instance=ExtResource("11_prh7q")]
 
 [node name="Menu" parent="." instance=ExtResource("11_nirtq")]
 visible = false

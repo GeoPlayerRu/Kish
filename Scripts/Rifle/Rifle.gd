@@ -52,17 +52,17 @@ var knockback_tween : Tween
 
 func _ready() -> void:
 	#Registering items
-	ItemBank.white_category.append(ItemBank.Item.new(0,func(): damage += damage * 0.05))
-	ItemBank.white_category.append(ItemBank.Item.new(1,func(): reload_timer.wait_time -= 0.1))
+	ItemBank.white_category.append(ItemBank.Item.new("desc_dmg1",0,func(): damage += damage * 0.05))
+	ItemBank.white_category.append(ItemBank.Item.new("desc_rld1",1,func(): reload_timer.wait_time -= 0.1))
 	
-	ItemBank.blue_category.append(ItemBank.Item.new(7,func(): cooldown.wait_time -= 0.25))
-	ItemBank.blue_category.append(ItemBank.Item.new(8,func(): damage += damage * 0.1))
-	ItemBank.blue_category.append(ItemBank.Item.new(9,func(): reload_timer.wait_time -= reload_timer.wait_time*0.05))
+	ItemBank.blue_category.append(ItemBank.Item.new("desc_firerate",7,func(): cooldown.wait_time -= 0.25))
+	ItemBank.blue_category.append(ItemBank.Item.new("desc_dmg2",8,func(): damage += damage * 0.1))
+	ItemBank.blue_category.append(ItemBank.Item.new("desc_rld2",9,func(): reload_timer.wait_time -= reload_timer.wait_time*0.05))
 	
 	start_center = center.position
 	
-	var long_barrel = ItemBank.Item.new(12)
-	var short_barrel = ItemBank.Item.new(13)
+	var long_barrel = ItemBank.Item.new("desc_lb",12)
+	var short_barrel = ItemBank.Item.new("desc_sb",13)
 	
 	long_barrel.action = func(): 
 		switch_barrels(1)
@@ -86,8 +86,8 @@ func _ready() -> void:
 	ItemBank.red_category.append(short_barrel)
 	
 	#Clip upgrade
-	var clip_uprgade = ItemBank.Item.new(14)
-	var caliber_upgrade = ItemBank.Item.new(17)
+	var clip_uprgade = ItemBank.Item.new("desc_clip",14)
+	var caliber_upgrade = ItemBank.Item.new("desc_cal",17)
 	
 	clip_uprgade.action = func(): 
 		$Center/Clip.visible = true
@@ -96,7 +96,7 @@ func _ready() -> void:
 		ItemBank.red_category.erase(clip_uprgade)
 		ItemBank.red_category.erase(caliber_upgrade)
 		current_ammo = max_ammo
-		var mag = ItemBank.Item.new(20)
+		var mag = ItemBank.Item.new("desc_mag",20)
 		mag.action = func(): 
 			if mag.used:
 				max_ammo+=1
@@ -120,7 +120,7 @@ func _ready() -> void:
 		cooldown.wait_time += cooldown.wait_time * 0.15
 		ItemBank.red_category.erase(clip_uprgade)
 		ItemBank.red_category.erase(caliber_upgrade)
-		var minishark = ItemBank.Item.new(23)
+		var minishark = ItemBank.Item.new("desc_mini",23)
 		minishark.action = func(): 
 			if minishark.used:
 				ch_to_not_consume -= 0.1
@@ -134,8 +134,8 @@ func _ready() -> void:
 	ItemBank.red_category.append(clip_uprgade)
 	ItemBank.red_category.append(caliber_upgrade)
 	
-	var af = ItemBank.Item.new(15)
-	var rounds = ItemBank.Item.new(16)
+	var af = ItemBank.Item.new("desc_af",15)
+	var rounds = ItemBank.Item.new("desc_rounds",16)
 	
 	af.action = func():
 		autofire = true
@@ -154,7 +154,7 @@ func _ready() -> void:
 			explo.damage = damage * damage_mult / 4
 			explo.radius = explosion_radius
 		cooldown.wait_time += cooldown.wait_time * 0.15
-		var rockets := ItemBank.Item.new(22)
+		var rockets := ItemBank.Item.new("desc_rockets",22)
 		rockets.action = func():
 			current_barrel.projectile = load("res://Scenes/Rifle/puzoket.tscn")
 			cooldown.wait_time += cooldown.wait_time * 0.15

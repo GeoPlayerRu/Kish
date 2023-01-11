@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4hs0ss5ce5t8"]
+[gd_scene load_steps=8 format=3 uid="uid://d4hs0ss5ce5t8"]
 
 [ext_resource type="Script" path="res://Scripts/GameMenu.gd" id="1_6xo3s"]
 [ext_resource type="Theme" uid="uid://c0d46l53bp4g6" path="res://main_theme.tres" id="1_n5mmg"]
@@ -13,6 +13,17 @@ font_size = 24
 [sub_resource type="LabelSettings" id="LabelSettings_r8eih"]
 font_size = 32
 
+[sub_resource type="GDScript" id="GDScript_xrxlc"]
+script/source = "extends Label
+
+class_name InternationalizedLabel
+
+@export var key : String
+
+func _ready() -> void:
+	text = tr(key)
+"
+
 [node name="Menu" type="Control"]
 process_mode = 3
 layout_mode = 3
@@ -25,6 +36,7 @@ script = ExtResource("1_6xo3s")
 
 [node name="Panel" type="Panel" parent="."]
 process_mode = 2
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -33,11 +45,12 @@ anchor_bottom = 0.5
 offset_left = -282.0
 offset_top = -242.0
 offset_right = 282.0
-offset_bottom = 242.0
+offset_bottom = 310.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -47,43 +60,33 @@ theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/Margin"]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 548.0
-offset_bottom = 473.0
+layout_mode = 2
 theme = ExtResource("1_n5mmg")
 
 [node name="Head" type="PanelContainer" parent="Panel/Margin/VBoxContainer"]
-offset_right = 532.0
-offset_bottom = 70.0
+layout_mode = 2
 
 [node name="Label" type="Label" parent="Panel/Margin/VBoxContainer/Head"]
-offset_right = 532.0
-offset_bottom = 70.0
-text = "MENU"
+layout_mode = 2
+text = "game_menu"
 label_settings = SubResource("LabelSettings_cuk67")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VolumeLabel" type="Label" parent="Panel/Margin/VBoxContainer"]
-offset_top = 74.0
-offset_right = 532.0
-offset_bottom = 111.0
+layout_mode = 2
 theme = ExtResource("1_n5mmg")
-text = "Volume
-"
+text = "volume"
 label_settings = SubResource("LabelSettings_woo64")
 
 [node name="Volume" type="HBoxContainer" parent="Panel/Margin/VBoxContainer"]
-offset_top = 115.0
-offset_right = 532.0
-offset_bottom = 141.0
+layout_mode = 2
 
 [node name="VolumeSlider" type="HSlider" parent="Panel/Margin/VBoxContainer/Volume"]
-offset_right = 509.0
-offset_bottom = 16.0
+layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Sensivity for the mouse"
 focus_neighbor_bottom = NodePath("../../GamepadSensivitySlider")
@@ -93,25 +96,19 @@ value = 75.0
 tick_count = 5
 
 [node name="Label" type="Label" parent="Panel/Margin/VBoxContainer/Volume"]
-offset_left = 513.0
-offset_right = 532.0
-offset_bottom = 26.0
+layout_mode = 2
 text = "75
 "
 script = ExtResource("2_1cot7")
 
 [node name="Sensivity" type="Label" parent="Panel/Margin/VBoxContainer"]
-offset_top = 145.0
-offset_right = 532.0
-offset_bottom = 182.0
+layout_mode = 2
 theme = ExtResource("1_n5mmg")
-text = "Sensivity"
+text = "sensivity"
 label_settings = SubResource("LabelSettings_woo64")
 
 [node name="SensivitySlider" type="HSlider" parent="Panel/Margin/VBoxContainer"]
-offset_top = 186.0
-offset_right = 532.0
-offset_bottom = 202.0
+layout_mode = 2
 tooltip_text = "Sensivity for the mouse"
 focus_neighbor_bottom = NodePath("../GamepadSensivitySlider")
 focus_next = NodePath("../GamepadSensivitySlider")
@@ -122,17 +119,13 @@ step = 0.01
 value = 1.0
 
 [node name="GamepadSensivity" type="Label" parent="Panel/Margin/VBoxContainer"]
-offset_top = 206.0
-offset_right = 532.0
-offset_bottom = 243.0
+layout_mode = 2
 theme = ExtResource("1_n5mmg")
-text = "Gamepad Sensivity"
+text = "g_sensivity"
 label_settings = SubResource("LabelSettings_woo64")
 
 [node name="GamepadSensivitySlider" type="HSlider" parent="Panel/Margin/VBoxContainer"]
-offset_top = 247.0
-offset_right = 532.0
-offset_bottom = 263.0
+layout_mode = 2
 tooltip_text = "Sensivity for the gamepad"
 focus_neighbor_top = NodePath("../SensivitySlider")
 focus_neighbor_bottom = NodePath("../Post-Effects/CheckBox")
@@ -144,14 +137,11 @@ step = 0.1
 value = 1.0
 
 [node name="Post-Effects" type="PanelContainer" parent="Panel/Margin/VBoxContainer"]
-offset_top = 267.0
-offset_right = 532.0
-offset_bottom = 315.0
+layout_mode = 2
 theme = ExtResource("1_n5mmg")
 
 [node name="CheckBox" type="CheckButton" parent="Panel/Margin/VBoxContainer/Post-Effects"]
-offset_right = 44.0
-offset_bottom = 48.0
+layout_mode = 2
 size_flags_horizontal = 0
 tooltip_text = "Toggle post effects listed below"
 focus_neighbor_top = NodePath("../../GamepadSensivitySlider")
@@ -161,30 +151,26 @@ theme = ExtResource("1_n5mmg")
 button_pressed = true
 
 [node name="Label" type="Label" parent="Panel/Margin/VBoxContainer/Post-Effects"]
-offset_right = 532.0
-offset_bottom = 48.0
+layout_mode = 2
 theme = ExtResource("1_n5mmg")
-text = "Post-Effects"
+text = "post_effects"
 label_settings = SubResource("LabelSettings_r8eih")
 horizontal_alignment = 1
+script = SubResource("GDScript_xrxlc")
+key = "post_effects"
 
 [node name="PixelizationLabel" type="Label" parent="Panel/Margin/VBoxContainer"]
-offset_top = 319.0
-offset_right = 532.0
-offset_bottom = 356.0
+layout_mode = 2
 theme = ExtResource("1_n5mmg")
-text = "Pixelization"
+text = "pixelization"
 label_settings = SubResource("LabelSettings_woo64")
 
 [node name="Pixelization" type="HBoxContainer" parent="Panel/Margin/VBoxContainer"]
-offset_top = 360.0
-offset_right = 532.0
-offset_bottom = 386.0
+layout_mode = 2
 theme = ExtResource("1_n5mmg")
 
 [node name="PixelizationCheck" type="CheckButton" parent="Panel/Margin/VBoxContainer/Pixelization"]
-offset_right = 44.0
-offset_bottom = 26.0
+layout_mode = 2
 focus_neighbor_top = NodePath("../../Post-Effects/CheckBox")
 focus_neighbor_right = NodePath("../PixelizationSlider")
 focus_neighbor_bottom = NodePath("../../HBoxContainer/ColorCorrectionSlider")
@@ -192,9 +178,7 @@ theme = ExtResource("1_n5mmg")
 button_pressed = true
 
 [node name="PixelizationSlider" type="HSlider" parent="Panel/Margin/VBoxContainer/Pixelization"]
-offset_left = 48.0
-offset_right = 518.0
-offset_bottom = 16.0
+layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Set the amount of pixelization"
 focus_neighbor_left = NodePath("../PixelizationCheck")
@@ -208,36 +192,29 @@ max_value = 64.0
 value = 4.0
 
 [node name="PanelContainer" type="PanelContainer" parent="Panel/Margin/VBoxContainer/Pixelization"]
-offset_left = 522.0
-offset_right = 532.0
-offset_bottom = 26.0
+layout_mode = 2
 theme = ExtResource("1_n5mmg")
 
 [node name="Label" type="Label" parent="Panel/Margin/VBoxContainer/Pixelization/PanelContainer"]
-offset_right = 10.0
-offset_bottom = 26.0
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
 theme = ExtResource("1_n5mmg")
 text = "4"
 script = ExtResource("2_1cot7")
 
 [node name="ColorCorrectionLabel" type="Label" parent="Panel/Margin/VBoxContainer"]
-offset_top = 390.0
-offset_right = 532.0
-offset_bottom = 427.0
+layout_mode = 2
 theme = ExtResource("1_n5mmg")
-text = "Color Correction
-"
+text = "cc"
 label_settings = SubResource("LabelSettings_woo64")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/Margin/VBoxContainer"]
-offset_top = 431.0
-offset_right = 532.0
-offset_bottom = 457.0
+layout_mode = 2
 theme = ExtResource("1_n5mmg")
 
 [node name="ColorCorrectionSlider" type="HSlider" parent="Panel/Margin/VBoxContainer/HBoxContainer"]
-offset_right = 509.0
-offset_bottom = 16.0
+layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Set the pallete restriction"
 focus_neighbor_top = NodePath("../../Pixelization/PixelizationCheck")
@@ -247,17 +224,31 @@ max_value = 256.0
 value = 24.0
 
 [node name="PanelContainer" type="PanelContainer" parent="Panel/Margin/VBoxContainer/HBoxContainer"]
-offset_left = 513.0
-offset_right = 532.0
-offset_bottom = 26.0
+layout_mode = 2
 theme = ExtResource("1_n5mmg")
 
 [node name="Label" type="Label" parent="Panel/Margin/VBoxContainer/HBoxContainer/PanelContainer"]
-offset_right = 19.0
-offset_bottom = 26.0
+layout_mode = 2
 theme = ExtResource("1_n5mmg")
 text = "24"
 script = ExtResource("2_1cot7")
+
+[node name="Language" type="HBoxContainer" parent="Panel/Margin/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/Margin/VBoxContainer/Language"]
+layout_mode = 2
+text = "lang"
+label_settings = SubResource("LabelSettings_woo64")
+
+[node name="OptionButton" type="OptionButton" parent="Panel/Margin/VBoxContainer/Language"]
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "ru"
+popup/item_0/id = 0
+popup/item_1/text = "eng"
+popup/item_1/id = 1
 
 [connection signal="value_changed" from="Panel/Margin/VBoxContainer/Volume/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
 [connection signal="value_changed" from="Panel/Margin/VBoxContainer/Volume/VolumeSlider" to="Panel/Margin/VBoxContainer/Volume/Label" method="_on_slider_value_changed"]
@@ -269,3 +260,4 @@ script = ExtResource("2_1cot7")
 [connection signal="value_changed" from="Panel/Margin/VBoxContainer/Pixelization/PixelizationSlider" to="Panel/Margin/VBoxContainer/Pixelization/PanelContainer/Label" method="_on_slider_value_changed"]
 [connection signal="value_changed" from="Panel/Margin/VBoxContainer/HBoxContainer/ColorCorrectionSlider" to="." method="_on_color_correction_value_changed"]
 [connection signal="value_changed" from="Panel/Margin/VBoxContainer/HBoxContainer/ColorCorrectionSlider" to="Panel/Margin/VBoxContainer/HBoxContainer/PanelContainer/Label" method="_on_slider_value_changed"]
+[connection signal="item_selected" from="Panel/Margin/VBoxContainer/Language/OptionButton" to="." method="_on_option_button_item_selected"]

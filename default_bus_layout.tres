@@ -6,6 +6,7 @@ rate_hz = 0.125
 
 [sub_resource type="AudioEffectFilter" id="AudioEffectFilter_wwkmx"]
 resource_name = "Filter"
+resonance = 0.1
 
 [resource]
 bus/1/name = &"Ambient"

@@ -1,0 +1,26 @@
+key;en;ru
+game_menu;MENU;МЕНЮ
+volume;Volume;Звук
+sensivity;Sensivity;Чувствительность мыши
+g_sensivity;Gamepad Sensivity;Чувствительность геймпада
+post_effects;Post_Effects;Постэффекты
+pixelization;Pixelization;Пикселизация
+cc;Color correction;Цветокоррекция
+lang;Language;Язык
+desc_dmg1;Slightly increases your damage;Слегка повышает ваш урон
+desc_rld1;Slightly increases your reload time;Слегка снижает ваше время перезарядки
+desc_firerate;Increases your firerate;Повышает вашу скорость стрельбы
+desc_dmg2;Greatly increases your damage;Сильно повышает ваш урон
+desc_rld2;Greatly increases your reload time;Сильно понижает ваше время перезарядки
+desc_lb;Lengthtens your barrel, increasing aim;Удлиняет ствол оружия, повышая точность
+desc_sb;Shortens your arrel, decreasing aim, but granting a bonus to weapon speed.;Укорачивает ствол оружия, понижая точность но даёт бонус к скорости оружия
+desc_clip;Gives 5 rounds clip;Даёт 5х патронную обойму
+desc_cal;Increases your weapon’s caliber ;Увеличивает калибр вашего оружия
+desc_mag;Gives magazine and grants bonus to ammunition count.;Даёт магазин и бонус к количеству патронов
+desc_mini;Gives a chance to not consume an ammo;Даёт шанс не израсходовать патрон при стрельбе
+desc_af;Gives autofire ability;Даёт автострельбу
+desc_rounds;Gives explosive rounds;Даёт взрывные боеприпасы
+desc_rockets;Changes your rounds into rockets;Меняет ваши боеприпасы на ракеты
+desc_luck;Increases your luck;Повышает вашу удачу
+desc_speed;Increases your speed;Повышает вашу скорость стрельбы
+desc_vampire;Restore health from fallen enemies;Восстанавливайте здоровье с павших врагов

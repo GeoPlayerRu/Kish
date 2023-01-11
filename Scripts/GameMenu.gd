@@ -1,5 +1,7 @@
 extends Control
 
+const languages := ["ru","en"]
+
 @onready var screen_effects := $"../ScreenEffects"
 
 @onready var volume := $Panel/Margin/VBoxContainer/Volume/VolumeSlider
@@ -67,3 +69,7 @@ func _on_pixelization_check_toggled(button_pressed: bool) -> void:
 func _on_volume_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),value*0.56-50)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Ambient"),value*0.26-20)
+
+
+func _on_option_button_item_selected(index: int) -> void:
+	TranslationServer.set_locale(languages[index])

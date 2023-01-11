@@ -39,16 +39,16 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Globals.player = self
 	
-	var luckItem = ItemBank.Item.new(2)
+	var luckItem = ItemBank.Item.new("desc_luck",2)
 	luckItem.action = func(): 
 		luck += 1
 		if luck >= 5:
 			ItemBank.white_category.erase(luckItem)
 	
 	ItemBank.white_category.append(luckItem)
-	ItemBank.white_category.append(ItemBank.Item.new(3,func(): speed += 0.75))
+	ItemBank.white_category.append(ItemBank.Item.new("desc_speed",3,func(): speed += 0.75))
 	
-	ItemBank.blue_category.append(ItemBank.Item.new(6,func(): vampirisim += 0.25))
+	ItemBank.blue_category.append(ItemBank.Item.new("desc_vampire",6,func(): vampirisim += 0.25))
 	
 	
 
