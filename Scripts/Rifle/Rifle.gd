@@ -46,6 +46,8 @@ var autofire := false
 var magazine := false
 var knockback := 0.3
 
+var consume := 1
+
 var explosion = preload("res://Scenes/explosion.tscn")
 
 var knockback_tween : Tween
@@ -147,6 +149,7 @@ func _ready() -> void:
 		
 	rounds.action = func():
 		explosion_radius += 1
+		consume += 1
 		current_barrel.on_hit = func(pos):
 			var explo = explosion.instantiate()
 			get_tree().current_scene.add_child(explo)
@@ -159,6 +162,7 @@ func _ready() -> void:
 			current_barrel.projectile = load("res://Scenes/Rifle/puzoket.tscn")
 			cooldown.wait_time += cooldown.wait_time * 0.15
 			ItemBank.yellow_category.erase(rockets)
+			consume += 1
 		
 		ItemBank.yellow_category.append(rockets)
 		
@@ -200,7 +204,7 @@ func fire(skip := false):
 		return
 	current_barrel.accuracy = accuracy
 	current_barrel.shoot(damage*damage_mult)
-	current_ammo-=1
+	current_ammo-=consume
 	center.position.z -= knockback
 	
 	var shell = SHELL.instantiate()

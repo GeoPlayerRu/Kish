@@ -5,6 +5,9 @@ const SPEED := 100
 
 var damage : float
 
+func _ready() -> void:
+	get_tree().create_timer(10.0).timeout.connect(queue_free)
+
 func _physics_process(delta: float) -> void:
 	global_position += transform.basis.z * delta * SPEED
 

@@ -4,13 +4,13 @@ const FADE := preload("res://Scenes/fade_out.tscn")
 
 
 func _use():
+	if locked or WaveSystem.locked: return
 	if WaveSystem.waves == 15:
 		var fade = FADE.instantiate()
 		get_tree().current_scene.add_child(fade)
 		await fade.animation_finished
 		get_tree().change_scene_to_file("res://Scenes/win_screen.tscn")
 		return
-	if locked or WaveSystem.locked: return
 	locked = true
 	while(Globals.firewoods >= 3):
 		Globals.firewoods -= 3

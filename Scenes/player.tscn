@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://8k7mwk62whcl"]
+[gd_scene load_steps=13 format=3 uid="uid://8k7mwk62whcl"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_5t5rw"]
 [ext_resource type="PackedScene" uid="uid://kygkb5tg4u6e" path="res://Scenes/Rifle/rifle.tscn" id="2_mlh38"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dsis6dsarau6v" path="res://Sprites/Moroz.png" id="6_8hjxh"]
 [ext_resource type="Script" path="res://Scripts/Dodge.gd" id="7_qdxg3"]
 [ext_resource type="AudioStream" uid="uid://c6x8egoapjfm" path="res://Sounds/Hit.wav" id="8_6yvxd"]
+[ext_resource type="PackedScene" uid="uid://bscdcxyxjfwrq" path="res://Scenes/dodge.tscn" id="9_5ir86"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l3wvy"]
 
@@ -71,7 +72,7 @@ texture = ExtResource("6_8hjxh")
 script = ExtResource("7_qdxg3")
 
 [node name="DodgeCooldown" type="Timer" parent="Dodge"]
-wait_time = 6.0
+wait_time = 4.0
 one_shot = true
 
 [node name="DodgeTimer" type="Timer" parent="Dodge"]
@@ -80,5 +81,12 @@ one_shot = true
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_6yvxd")
+
+[node name="DodgeIndicator" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("9_5ir86")]
+offset_left = 0.0
+offset_top = 620.0
+offset_right = 100.0
+offset_bottom = 720.0
+timer = NodePath("../Dodge/DodgeCooldown")
 
 [connection signal="timeout" from="Dodge/DodgeTimer" to="Dodge" method="_on_dodge_timer_timeout"]
